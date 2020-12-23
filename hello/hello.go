@@ -1,15 +1,37 @@
 package main
 
-const englishHelloPrefix = "Hello, "
+import "fmt"
 
-// Hello returns a greeting
-func Hello(name string) string {
+const spanish = "Spanish"
+const french = "French"
+const italian = "Italian"
+const englishHelloPrefix = "Hello, "
+const spanishHelloPrefix = "Hola, "
+const frenchHelloPrefix = "Bonjour, "
+const italianHelloPrefix = "Ciao, "
+
+func Hello(name, language string) string {
 	if name == "" {
-		name = "world!"
+		name = "World"
 	}
-	return englishHelloPrefix + name
+	return prefixGreeting(language) + name
+}
+
+func prefixGreeting(language string) (prefix string) {
+
+	switch language {
+	case spanish:
+		prefix = spanishHelloPrefix
+	case french:
+		prefix = frenchHelloPrefix
+	case italian:
+		prefix = italianHelloPrefix
+	default:
+		prefix = englishHelloPrefix
+	}
+	return
 }
 
 func main() {
-	println(Hello(""))
+	fmt.Println(Hello("", "English"))
 }
